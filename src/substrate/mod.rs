@@ -37,7 +37,6 @@ use pallet_contracts::chain_extension::{
     BufInBufOutState,
     Environment,
     Ext,
-    UncheckedFrom,
 };
 use sp_runtime::DispatchError;
 
@@ -45,7 +44,6 @@ pub struct ExtensionContext<'a, 'b, E: Ext, T, Extension>
 where
     T: SysConfig,
     E: Ext<T = T>,
-    <E::T as SysConfig>::AccountId: UncheckedFrom<<E::T as SysConfig>::Hash> + AsRef<[u8]>,
 {
     pub env: Environment<'a, 'b, E, BufInBufOutState>,
     pub storage: &'a mut Extension,
@@ -55,7 +53,6 @@ impl<'a, 'b, E: Ext, T, Extension> ExtensionContext<'a, 'b, E, T, Extension>
 where
     T: SysConfig,
     E: Ext<T = T>,
-    <E::T as SysConfig>::AccountId: UncheckedFrom<<E::T as SysConfig>::Hash> + AsRef<[u8]>,
 {
     pub fn new(storage: &'a mut Extension, env: Environment<'a, 'b, E, BufInBufOutState>) -> Self {
         ExtensionContext { env, storage }

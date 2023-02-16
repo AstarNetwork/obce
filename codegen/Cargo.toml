@@ -22,9 +22,7 @@ blake2 = "0.10"
 [lib]
 name = "obce_codegen"
 path = "src/lib.rs"
-crate-type = [
-    "rlib",
-]
+crate-type = ["rlib"]
 
 [features]
 default = ["std"]
